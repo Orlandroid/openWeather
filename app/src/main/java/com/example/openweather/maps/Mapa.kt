@@ -1,4 +1,4 @@
-package com.example.openweather
+package com.example.openweather.maps
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +12,6 @@ class Mapa : Fragment() {
     private var _binding: FragmentMapaBinding? = null
     private val binding get() = _binding!!
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,5 +24,5 @@ class Mapa : Fragment() {
         super.onDestroy()
         _binding = null
     }
-    
+
 }
