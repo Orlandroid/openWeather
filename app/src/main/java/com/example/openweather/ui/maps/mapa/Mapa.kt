@@ -1,23 +1,22 @@
-package com.example.openweather.weather
+package com.example.openweather.ui.maps.mapa
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.openweather.databinding.FragmentWeatherBinding
+import com.example.openweather.databinding.FragmentMapaBinding
 
+class Mapa : Fragment() {
 
-class Weather : Fragment() {
-
-    private var _binding: FragmentWeatherBinding? = null
+    private var _binding: FragmentMapaBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentWeatherBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentMapaBinding.inflate(inflater, container, false)
         return binding.root
     }
 
