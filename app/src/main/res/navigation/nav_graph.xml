@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_mapa" />
     <fragment
         android:id="@+id/weather"
-        android:name="com.example.openweather.ui.maps.weather.Weather"
+        android:name="com.example.openweather.ui.maps.weather.WeatherFragment"
         android:label="fragment_weather"
         tools:layout="@layout/fragment_weather" />
 </navigation>

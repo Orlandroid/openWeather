@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.openweather.databinding.FragmentWeatherBinding
 
 
-class Weather : Fragment() {
+class WeatherFragment : Fragment() {
 
     private var _binding: FragmentWeatherBinding? = null
     private val binding get() = _binding!!
