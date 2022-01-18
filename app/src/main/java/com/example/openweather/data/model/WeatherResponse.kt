@@ -15,6 +15,7 @@ data class WeatherResponse(
     )
 
     data class MainTempeture(
+        val temp: Float,
         val temp_min: Float,
         val temp_max: Float,
         val humidity: Int

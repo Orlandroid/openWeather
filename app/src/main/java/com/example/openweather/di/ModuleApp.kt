@@ -1,7 +1,6 @@
 package com.example.openweather.di
 
 import com.example.openweather.data.api.BASE_URL
-import com.example.openweather.data.api.WORK
 import com.example.openweather.data.api.WebServices
 import com.example.openweather.data.repository.Repository
 import dagger.Module
