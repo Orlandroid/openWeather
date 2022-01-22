@@ -3,25 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/main">
+    app:startDestination="@id/weather">
 
-    <fragment
-        android:id="@+id/main"
-        android:name="com.example.openweather.ui.maps.main.Main"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
-        <action
-            android:id="@+id/action_main_to_weather"
-            app:destination="@id/weather" />
-        <action
-            android:id="@+id/action_main_to_mapa"
-            app:destination="@id/mapa" />
-    </fragment>
-    <fragment
-        android:id="@+id/mapa"
-        android:name="com.example.openweather.ui.maps.mapa.Mapa"
-        android:label="fragment_mapa"
-        tools:layout="@layout/fragment_mapa" />
     <fragment
         android:id="@+id/weather"
         android:name="com.example.openweather.ui.maps.weather.WeatherFragment"

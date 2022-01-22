@@ -19,12 +19,6 @@ class Main : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-        binding.buttonMaps.setOnClickListener {
-            findNavController().navigate(R.id.action_main_to_mapa)
-        }
-        binding.buttonWeather.setOnClickListener {
-            findNavController().navigate(R.id.action_main_to_weather)
-        }
         return binding.root
     }
 

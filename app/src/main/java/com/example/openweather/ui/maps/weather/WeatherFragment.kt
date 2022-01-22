@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.openweather.data.Result
 import com.example.openweather.data.api.API_KEY
 import com.example.openweather.databinding.FragmentWeatherBinding
@@ -33,16 +35,24 @@ class WeatherFragment : Fragment() {
 
     private fun setUpUi() {
         viewModel.getWeatherResponse("17.978733", "-101.016948", API_KEY)
+        with(binding){
+            containerCard.setOnClickListener {
+                viewModel.getWeatherResponse("17.978733", "-101.016948", API_KEY)
+            }
+        }
     }
 
     private fun setUpObservers() {
         viewModel.weatherResponse.observe(viewLifecycleOwner, {
             when (it) {
                 is Result.Loading -> {
-
+                    binding.skeleton.showSkeleton()
                 }
                 is Result.Success -> {
                     with(binding) {
+                        binding.skeleton.showOriginal()
+                        val urlImage = "http://openweathermap.org/img/wn/${it.data.weather[0].icon}@2x.png"
+                        Glide.with(this@WeatherFragment).load(urlImage).into(binding.imageView)
                         weatherMain.text = it.data.weather[0].main
                         txtDescription.text = it.data.weather[0].description
                         txtMainTemp.text = it.data.main.temp.toString()
@@ -55,10 +65,10 @@ class WeatherFragment : Fragment() {
                     }
                 }
                 is Result.Error -> {
-
+                    binding.skeleton.showOriginal()
                 }
                 is Result.ErrorNetwork -> {
-
+                    binding.skeleton.showOriginal()
                 }
             }
         })
