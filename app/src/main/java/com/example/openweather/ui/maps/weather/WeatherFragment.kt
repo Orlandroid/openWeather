@@ -25,7 +25,7 @@ class WeatherFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentWeatherBinding.inflate(layoutInflater, container, false)
         setUpUi()
         setUpObservers()
@@ -43,15 +43,17 @@ class WeatherFragment : Fragment() {
     }
 
     private fun setUpObservers() {
-        viewModel.weatherResponse.observe(viewLifecycleOwner, {
+        viewModel.weatherResponse.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Loading -> {
                     binding.skeleton.showSkeleton()
                 }
+
                 is Result.Success -> {
                     with(binding) {
                         binding.skeleton.showOriginal()
-                        val urlImage = "http://openweathermap.org/img/wn/${it.data.weather[0].icon}@2x.png"
+                        val urlImage =
+                            "http://openweathermap.org/img/wn/${it.data.weather[0].icon}@2x.png"
                         Glide.with(this@WeatherFragment).load(urlImage).into(binding.imageView)
                         weatherMain.text = it.data.weather[0].main
                         txtDescription.text = it.data.weather[0].description
@@ -61,17 +63,19 @@ class WeatherFragment : Fragment() {
                         txtWindSpeed.text = it.data.wind.speed.toString()
                         txtDeg.text = it.data.wind.deg.toString()
                         txtGust.text = it.data.wind.gust.toString()
-                        txtCountry.text=it.data.sys.country
+                        txtCountry.text = it.data.sys.country
                     }
                 }
+
                 is Result.Error -> {
                     binding.skeleton.showOriginal()
                 }
+
                 is Result.ErrorNetwork -> {
                     binding.skeleton.showOriginal()
                 }
             }
-        })
+        }
     }
 
     override fun onDestroy() {
